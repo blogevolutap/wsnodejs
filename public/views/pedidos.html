@@ -1,0 +1,106 @@
+<section>
+	<div class="section-header">
+		<ol class="breadcrumb">
+			<li ng-repeat="bc in breadcrumb.routes">
+				<a ng-click="irPara(bc.url)">{{bc.name}}</a>
+			</li>			
+			<li class="active">{{breadcrumb.active.name}}</li>
+		</ol>
+	</div>
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN INTRO -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="text-primary">Pedidos</h1>
+			</div><!--end .col -->
+			<div class="col-lg-8">
+				<article class="margin-bottom-xxl">
+					<p class="lead">
+						
+					</p>
+				</article>
+			</div><!--end .col -->
+		</div><!--end .row -->
+		<!-- END INTRO -->
+
+		<!-- BEGIN TILE CONTENT -->
+		<div class="row">
+			<div class="card">
+					<div class="card-body no-padding">
+						<ul class="list">
+							<li class="tile pedido" ng-repeat="pedido in pedidos">
+								<a class="tile-content ink-reaction">
+									<div class="tile-text">
+										<span class="pedido-codigo">#{{pedido.codigo}}</span>
+										<span class="separator-vertical"></span>
+										Cliente: {{pedido.cliente}}
+										<small>
+											Pago: {{pedido.pago}}											
+										</small>
+									</div>
+								</a>
+								<a ng-show="!pedido.pago" class="btn btn-flat ink-reaction">
+									<i ng-click="pagarPedido($index)" data-toggle="modal" data-target="#pagarModal" class="fa fa-money"></i>
+								</a>
+								<a ng-show="pedido.pago" class="btn btn-flat ink-reaction">
+									<i ng-click="imprimirPedido(pedido._id)" class="fa fa-print"></i>
+								</a>
+								<a class="btn btn-flat ink-reaction">
+									<i ng-click="editarPedido(pedido._id)" class="fa fa-pencil"></i>
+								</a>
+								<a class="btn btn-flat ink-reaction">
+									<i ng-click="deletarPedido(pedido._id)" class="fa fa-trash"></i>
+								</a>
+								
+							</li>							
+						</ul>
+					</div><!--end .card-body -->
+				</div><!--end .card -->
+				<em class="text-caption"></em>			
+		</div><!--end .row -->
+		<!-- END TILE CONTENT -->
+
+		<div class="floating-action">
+			<button ng-click="novoPedido()" type="button" class="btn ink-reaction btn-floating-action btn-primary"><i class="fa fa-plus"></i></button>
+		</div>
+
+		<!-- BEGIN DELETAR PEDIDO MODAL MARKUP -->
+		<div class="modal fade" id="pagarModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="deleteModalLabel">Pagar pedido</h4>
+					</div>
+					<div class="modal-body">
+						<p>Deseja realmente marcar este como pago? Valor: R$ 200</p>	
+					</div>
+					<div class="modal-footer">					
+						<button type="button" ng-click="confirmaPagar()" class="btn btn-primary" data-dismiss="modal">Pagar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<!-- BEGIN PAGAR PEDIDO MODAL MARKUP -->
+		<div class="modal fade" id="pagarModal" tabindex="-1" role="dialog" aria-labelledby="pagarModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="deleteModalLabel">Deletar Produto</h4>
+					</div>
+					<div class="modal-body">
+						<p>Deseja realmente deletar este produto?</p>
+					</div>
+					<div class="modal-footer">					
+						<button type="button" ng-click="confirmaDeletar()" class="btn btn-primary" data-dismiss="modal">Pagar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</div><!--end .section-body -->
+</section>

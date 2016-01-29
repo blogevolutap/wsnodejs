@@ -1,0 +1,91 @@
+<section>
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN INTRO -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="text-primary">Cadastro</h1>
+			</div><!--end .col -->
+			<div class="col-lg-8">
+				<article class="margin-bottom-xxl">
+					<p class="lead">
+						O <b>Pedido+</b> ainda está em fase Beta. Se você tiver sugestões para melhorias do sistema, por favor, nos envie mensagem para contato@pedidoplus.com.
+						<br>
+						Se encontrar problemas, por favor, nos informe através o ícone <b>Informar problema</b> <i class="fa fa-bug"></i> no menu esquerdo.
+						<br>
+					</p>
+				</article>
+			</div><!--end .col -->
+		</div><!--end .row -->
+		<!-- END INTRO -->
+
+		<!-- BEGIN AUTOCOMPLETE -->
+		<div class="row">	
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-head style-primary">
+						<header>Cadastro de empresa</header>
+					</div>
+					<div class="card-body">
+						<form class="form">
+							<input type="hidden" ng-model="cadastro._id"/>
+							<input type="hidden" ng-model="cadastro._rev"/>
+							<div class="form-group col-md-6 floating-label">
+								<input type="text" ng-model="cadastro.enome" class="form-control input-lg" ng-class="{'dirty': cadastro.enome.length > 0}" id="large4">
+								<label for="large4">Nome da Empresa</label>
+							</div>
+							<div class="form-group col-md-6 floating-label">
+								<input type="text" ng-model="cadastro.ecnpj" class="form-control input-lg" ng-class="{'dirty': cadastro.ecnpj.length > 0}" id="large4">
+								<label for="large4">CNPJ</label>
+							</div>
+							<div class="form-group col-md-12 floating-label">
+								<input type="text" ng-model="cadastro.eendereco" class="form-control input-lg" ng-class="{'dirty': cadastro.eendereco.length > 0}" id="large4">
+								<label for="large4">Endereco</label>
+							</div>						
+							
+						</form>						
+					</div><!--end .card-body -->
+				</div><!--end .card -->				
+			</div><!--end .col -->
+					
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-head style-primary">
+						<header>Cadastro de usuário</header>
+					</div>
+					<div class="card-body">
+						<form class="form">
+							<input type="hidden" ng-model="cadastro._id"/>
+							<input type="hidden" ng-model="cadastro._rev"/>
+							<div class="form-group col-md-6 floating-label">
+								<input type="text" ng-model="cadastro.nome" class="form-control input-lg" ng-class="{'dirty': cadastro.nome.length > 0}" id="large4">
+								<label for="large4">Nome</label>
+							</div>
+							<div class="form-group col-md-6 floating-label">
+								<input type="text" ng-model="cadastro.sobrenome" class="form-control input-lg" ng-class="{'dirty': cadastro.sobrenome.length > 0}" id="large4">
+								<label for="large4">Sobrenome</label>
+							</div>
+							<div class="form-group col-md-12 floating-label">
+								<input type="text" ng-model="cadastro.email" class="form-control input-lg" ng-class="{'dirty': cadastro.email.length > 0}" id="large4">
+								<label for="large4">Email</label>
+							</div>
+							<div class="form-group col-md-3 floating-label">
+								<input type="password" ng-model="cadastro.senha" class="form-control input-lg" ng-class="{'dirty': cadastro.senha.length > 0}" id="large4">
+								<label for="large4">Senha</label>
+							</div>
+							<div class="form-group col-md-3 floating-label">
+								<input type="password" ng-model="cadastro.senha" class="form-control input-lg" ng-class="{'dirty': cadastro.senha.length > 0}" id="large4">
+								<label for="large4">Confirmar Senha</label>
+							</div>
+							<div class="col-md-12">
+								<button type="button" class="btn ink-reaction btn-flat btn-primary" ng-click="cadastrar(cadastro)">Cadastrar</button>
+								<button type="button" class="btn ink-reaction btn-flat btn-primary" ng-click="cancelar()">Cancelar</button>
+							</div>
+						</form>						
+					</div><!--end .card-body -->
+				</div><!--end .card -->				
+			</div><!--end .col -->
+		</div><!--end .row -->
+		<!-- END AUTOCOMPLETE -->
+	</div><!--end .section-body -->
+</section>

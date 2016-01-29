@@ -1,0 +1,124 @@
+body{
+	background: #fafafa;
+}
+
+form.form  .form-group{
+	padding-left: 0px;
+}
+
+.img-logo{
+	margin: 0 auto;
+	display: block;
+}
+
+[ng-cloak]
+{
+  display: none !important;
+}
+
+.form-more-produtos .form-group{
+	margin-bottom: 0px;
+}
+
+.form-more-produtos button.submit{
+
+}
+.title-divider{
+	color: #009688;
+	margin: 0px;
+}
+
+.list-produtos{
+	padding-top: 0px !important;
+}
+
+#header{
+	background:#3F51B5;
+	color: #FFF;
+}
+#header .btn-default.btn-flat, .btn-default.btn-icon-toggle{
+	color: #FFF;
+}
+
+.header-nav .header-nav-brand img {
+    max-height: 60px;
+}
+
+.pedido .pedido-codigo{
+	color: #333;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.text-primary{
+	color: #5AB963;
+}
+
+.menubar-pin .menubar-inverse .gui-controls > li.active:not(.gui-folder) > a, .menubar-visible .menubar-inverse .gui-controls > li.active:not(.gui-folder) > a{
+	background-color: #f43c73;
+}
+
+.menubar-inverse .gui-controls > li ul > li > a:hover, .menubar-inverse .gui-controls > li ul > li > a:focus{
+	background-color: #f43c73;	
+}
+
+
+/*
+	FUNDO MENU ESQ
+*/
+#menubar.menubar-inverse:before{
+	background: #e91e63;
+}
+.menubar-inverse .gui-icon{
+	color: #FFF;
+}
+.menubar-inverse .gui-controls li.gui-folder > a .title{
+	color: #FFF;
+}
+.menubar-inverse .gui-controls li.gui-folder.expanded > a .title, .menubar-inverse .gui-controls li.gui-folder.active > a .title{
+	color: #FFF;
+}
+.menubar-inverse .gui-controls li .title{
+	color :#FFF;
+}
+.gui-controls > li > a{
+	font-size: 14px;
+	font-style: normal;
+}
+
+.form-group.col-md-12, .form-group.col-md-6, .form-group > .col-sm-10{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+div.floating-action{
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+}
+
+
+.image-64{
+	max-width: 64px;
+	max-height: 64px;
+}
+.separator-vertical{
+	width: 1px;
+	height: 100%;
+	padding: 0 1px;
+	margin: 0 5px;
+	background-color: #000;
+}
+
+
+.tooltip-inner {
+    max-width: 200px;
+    padding: 5px 13px;
+    color: #fff;
+    text-align: center;
+    background-color: #727272;
+    border-radius: 3px;
+}
+
+.tooltip.top .tooltip-arrow {
+    display: none;
+}

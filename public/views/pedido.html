@@ -1,0 +1,114 @@
+<section>
+	<div class="section-header">
+		<ol class="breadcrumb">
+			<li ng-repeat="bc in breadcrumb.routes">
+				<a ng-click="irPara(bc.url)">{{bc.name}}</a>
+			</li>			
+			<li class="active">{{breadcrumb.active.name}}</li>
+		</ol>
+	</div>
+	<div class="section-body contain-lg">
+
+		<!-- BEGIN INTRO -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="text-primary">Pedido</h1>
+			</div><!--end .col -->
+			<div class="col-lg-8">
+				<article class="margin-bottom-xxl">
+					<p class="lead">						
+					</p>
+				</article>
+			</div><!--end .col -->
+		</div><!--end .row -->
+		<!-- END INTRO -->
+
+		<!-- BEGIN AUTOCOMPLETE -->
+		<div class="row">			
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<form class="form">
+							<input type="hidden" ng-model="pedido._id"/>
+							<input type="hidden" ng-model="pedido._rev"/>
+							<div class="form-group col-md-3 floating-label">
+								<input type="text" ng-model="pedido.codigo" class="form-control input-lg" ng-class="{'dirty': pedido.codigo.length > 0}" id="large4" required>
+								<label for="large4">Código do Pedido</label>
+							</div>
+							<div class="form-group col-md-9 floating-label">
+								<autocomplete id="large4" on-select="selectCliente" attr-input-class="form-control input-lg" attr-placeholder="" data="listClientes" placeholder="nome" ng-model="nproduto.cliente"></autocomplete>								
+								<label for="large4">Cliente</label>
+							</div>							
+							<div class="h2 title-divider form-group col-md-12">
+								Produtos
+							</div>
+							<div class="form-more-produtos form-group col-md-12">
+								
+								<div class="form-group col-md-4">
+									<autocomplete on-select="selectProduto"  attr-input-class="form-control input-lg" attr-placeholder="Produto" data="listProdutos" placeholder="nome" ng-model="nproduto.nome"></autocomplete>
+								</div>
+								<div class="form-group col-md-1">
+									<input type="text" disabled data-placement="top"  data-original-title="Valor do produto" class="form-control input-lg" placeholder="0" ng-model="nproduto.valor"/>
+								</div>
+								<div class="form-group col-md-1">
+									<input type="text" data-toggle="tooltip" data-placement="top"  data-original-title="Quantidade de produtos" class="form-control input-lg" placeholder="0" ng-model="nproduto.quantidade"/>
+								</div>							
+								<div class="form-group col-md-5">
+									<button type="button" data-toggle="tooltip" data-placement="top"  data-original-title="Adiciona o produto ao pedido" class="btn submit ink-reaction btn-flat btn-primary" ng-click="addProduto(nproduto)">Adicionar produto</button>							
+								</div>
+								<input type="hidden" ng-model="nproduto.imagem"/>
+								<input type="hidden" ng-model="nproduto.produto_id"/>
+								<input type="hidden" ng-model="nproduto.valor"/>
+							</div>
+							<div class="list-produtos form-group col-md-12">								
+								<ul class="list">
+									<li class="tile" ng-repeat="produto in produtos">
+										<a class="tile-content ink-reaction">
+											<!--div class="tile-icon">
+												<img class="image-64" src="{{produto.imagem}}"/>
+											</div-->
+											<div class="tile-text">									
+												{{produto.nome}} x{{produto.quantidade}}
+												<small>
+													Valor: {{produto.valor}}										
+												</small>
+											</div>
+										</a>
+										<a class="btn btn-flat ink-reaction">
+											<i ng-click="editarProdutoPedido($index)" class="fa fa-pencil"></i>
+										</a>
+										<a class="btn btn-flat ink-reaction">
+											<i ng-click="deletarProdutoPedido($index)" data-toggle="modal" data-target="#deleteModal" class="fa fa-trash"></i>
+										</a>
+									</li>							
+								</ul>
+							</div>	
+							<div class="form-group col-md-3 floating-label">							
+								<input data-toggle="tooltip" data-placement="top"  data-original-title="Valor total do pedido"  type="text" ng-model="pedido.valor" class="form-control input-lg" ng-class="{'dirty': (''+pedido.valor).length > 0}" id="large4" ui-money-mask="2">
+								<label for="large4">Valor total</label>
+							</div>						
+							
+							<div class="form-group col-md-12 ">
+								<label for="textarea13" class="control-label">Descrição</label>
+								<div class="col-sm-10">
+									<textarea name="textarea13" ng-model="produto.descricao" id="textarea13" class="form-control" rows="3" placeholder=""></textarea><div class="form-control-line"></div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<button type="button" class="btn ink-reaction btn-flat btn-primary" ng-click="salvarPedido(pedido)">Salvar</button>
+								<button type="button" class="btn ink-reaction btn-flat btn-primary" ng-click="cancelar()">Cancelar</button>
+							</div>
+						</form>						
+					</div><!--end .card-body -->
+				</div><!--end .card -->
+				<em class="text-caption">Autocomplete from jQuery and Typeahead</em>
+			</div><!--end .col -->
+		</div><!--end .row -->
+		<!-- END AUTOCOMPLETE -->
+	</div><!--end .section-body -->
+</section>
+<script>
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>

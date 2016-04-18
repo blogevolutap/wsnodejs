@@ -56,6 +56,7 @@ var ProdutoSchema = new Schema({
 	descricao	: String,
 	fornecedor	: String,
 	categoria	: String,
+	estoque 	: Number,
 	ativo		: Boolean
 });
 
@@ -112,6 +113,12 @@ var ClienteSchema = new Schema({
 	celular		: String,
 	endereco	: String,
 	ativo		: Boolean,
+});
+
+var EstoqueSchema = new Schema({	
+	estoque_id  : { type: ObjectId },
+	produto_id  : { type: ObjectId, required: true },
+	quantidade	: Number,
 });
 
 

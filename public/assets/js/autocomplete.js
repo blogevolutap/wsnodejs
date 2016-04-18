@@ -11,7 +11,7 @@ app.directive('autocomplete', function() {
       searchParam: '=ngModel',
       suggestions: '=data',
       onType: '=onType',
-      onSelect: '=onSelect',
+      onBlur: '=ngBlur',
       autocompleteRequired: '='
     },
     controller: ['$scope', function($scope){

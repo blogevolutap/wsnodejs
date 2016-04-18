@@ -3,7 +3,7 @@ function(JsonService, $scope, $routeParams, $http, $sce, $rootScope, $location) 
 	$scope.produtos = [];
 	$scope.nproduto = {};
 	$scope.pedido = { valor: '0' };
-
+	$scope.pedido.codigo = gerarCodigo() ;
 	var id = $routeParams.id;
 
 	//Se for edição de produto
@@ -36,6 +36,51 @@ function(JsonService, $scope, $routeParams, $http, $sce, $rootScope, $location) 
 		$scope.pedido.cliente = item.value._id;
 		console.log(item);
 	}
+
+	$scope.$watch(
+        "nproduto.cliente",
+        function handleFooChange( newValue, oldValue ) {
+        	if (newValue == undefined) return;
+        	if (newValue.length > 3){
+		    	JsonService.getClienteByName(newValue, function success(response){		
+	    			if (response.length > 0){
+	    				var item = response[0];
+	    				$scope.pedido.cliente = item._id;
+	    			}	
+					console.log(response);
+				}, function error(response){
+					console.log(response);
+				});
+		    }else{
+		    	$scope.pedido.cliente = "";
+		    }            
+        }
+    );
+
+	$scope.$watch(
+        "nproduto.nome",
+        function handleFooChange( newValue, oldValue ) {
+        	if (newValue == undefined) return;
+        	if (newValue.length > 3){
+		    	JsonService.getProdutoByName(newValue, function success(response){		
+	    			if (response.length > 0){
+	    				var item = response[0];
+	    				$scope.nproduto.valor = item.valor;
+						$scope.nproduto.produto_id = item._id;
+						$scope.nproduto.quantidade = 1;
+	    			}
+		    		
+					
+				}, function error(response){
+					console.log(response);
+				});
+		    }else{
+		    	$scope.nproduto.valor = "";
+				$scope.nproduto.produto_id = "";
+				$scope.nproduto.quantidade = "";
+		    }            
+        }
+    );
 
 	$scope.selectProduto = function(item){
 		$scope.nproduto.valor = item.value.valor;
@@ -93,6 +138,11 @@ function(JsonService, $scope, $routeParams, $http, $sce, $rootScope, $location) 
 	$scope.cancelar = function(){
 		$location.path("/pedidos");
 	}
+	function gerarCodigo(){
+		var dDate = new moment(new Date()).format("YYYY-MM-DD-00-hh-mm-ss").toString();
+		dDate = dDate.replace(new RegExp("-", 'g'), "");
+		return dDate;
+	}
 	function validarPedido( pedido ){
 		if (!pedido.cliente){
 			return false;
@@ -106,7 +156,7 @@ function(JsonService, $scope, $routeParams, $http, $sce, $rootScope, $location) 
 	function validateProduto( produto ){
 		if (!produto.nome){
 			return false;
-		}
+		}	
 		if (!produto.quantidade){
 			return false;
 		}

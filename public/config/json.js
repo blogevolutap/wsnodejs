@@ -1,5 +1,51 @@
 app.service('JsonService', function($http, Base64,  $q) {
     var $URL = "http://localhost/api/v1";
+    this.getEstoques = function(successCallback, errorCallback) {
+       $http({
+            method: 'GET',
+            url: $URL + '/estoques'
+        }).then(function success(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            successCallback(response.data);
+        }, function error(response) {
+            // called asynchronously if an error occurs
+            errorCallback(response.data);
+            // or server returns response with an error status.
+        });
+    }
+
+    this.getEstoque = function(id, successCallback, errorCallback) {
+       $http({
+            method: 'GET',
+            url:  $URL + '/estoque/' + id
+        }).then(function success(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            successCallback(response.data);
+        }, function error(response) {
+            // called asynchronously if an error occurs
+            errorCallback(response.data);
+            // or server returns response with an error status.
+        });
+    }
+
+    this.salvarEstoque = function(estoque, successCallback, errorCallback) {
+       $http({
+            method: 'POST',
+            url:  $URL + '/estoque',
+            data: estoque
+        }).then(function success(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            successCallback(response.data);
+        }, function error(response) {
+            // called asynchronously if an error occurs
+            errorCallback(response.data);
+            // or server returns response with an error status.
+        });
+    }   
+
     this.getPedidos = function(successCallback, errorCallback) {
        $http({
             method: 'GET',
@@ -112,6 +158,21 @@ app.service('JsonService', function($http, Base64,  $q) {
         });
     }
 
+    this.getProdutoByName = function(nome, successCallback, errorCallback) {
+       $http({
+            method: 'GET',
+            url:  $URL + '/produto/byname/' + nome
+        }).then(function success(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            successCallback(response.data);
+        }, function error(response) {
+            // called asynchronously if an error occurs
+            errorCallback(response.data);
+            // or server returns response with an error status.
+        });
+    }
+
     this.salvarProduto = function(produto, successCallback, errorCallback) {
        $http({
             method: 'POST',
@@ -182,6 +243,21 @@ app.service('JsonService', function($http, Base64,  $q) {
        $http({
             method: 'GET',
             url: $URL + '/cliente/' + id
+        }).then(function success(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            successCallback(response.data);
+        }, function error(response) {
+            // called asynchronously if an error occurs
+            errorCallback(response.data);
+            // or server returns response with an error status.
+        });
+    }
+
+    this.getClienteByName = function(nome, successCallback, errorCallback) {
+       $http({
+            method: 'GET',
+            url: $URL + '/cliente/byname/' + nome
         }).then(function success(response) {
             // this callback will be called asynchronously
             // when the response is available

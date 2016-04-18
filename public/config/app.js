@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngCookies', 'chart.js', 'filereader', 'autocomplete', 'ui.utils.masks']);
+var app = angular.module('app', ['ngRoute', 'angularMoment', 'ngCookies', 'chart.js', 'filereader', 'autocomplete', 'ui.utils.masks']);
 
 var AuthRoles = {
     'admin': 2,
@@ -95,6 +95,20 @@ app.config(function($routeProvider, $locationProvider){
 			routes: [
 				{name: 'Dashboard', url: '/'},
 				{name: 'Produtos', url: 'produtos'}
+			]		
+		}
+	})
+	.when('/estoque', {
+		templateUrl: 'views/estoque.html',
+		controller: 'EstoqueController',
+		access:{
+			requiredLogin: true,
+			requiredRole: AuthRoles.admin
+		},
+		breadcrumb:{
+			active: {name: 'Estoque'},
+			routes: [
+				{name: 'Dashboard', url: '/'}				
 			]		
 		}
 	})

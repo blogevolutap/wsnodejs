@@ -86,3 +86,17 @@ exports.fetchById = function(req, res, next){
 		res.send(result);	
 	})
 };
+
+exports.fetchByName = function(req, res, next){
+	Cliente.find({nome: req.params.nome}, function(err, result){
+		if (err){
+			if (err.name == 'CastError'){
+				res.status(404);
+				res.send('row id not found');
+			}
+			res.status(404);
+			res.send('row id not found');		
+		}
+		res.send(result);	
+	})
+};
